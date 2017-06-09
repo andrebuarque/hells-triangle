@@ -36,12 +36,20 @@ class IndexTest < Test::Unit::TestCase
 
     assert_equal(0, obj.maximum)
   end
+  
+  def test_valid_large_triangle
+    input = [ [1], [2,3], [4,5,6], [7,8,9,10], [11,12,13,14,15], [16,17,18,19,20,21], [22,23,24,25,26,27,28] ]
+
+    obj = Triangle.new input
+
+    assert_equal(84, obj.maximum)
+  end
 
   def test_invalid_triangle
     input = [ [6], [3,5], [9,7,1], [4,6,8] ]
 
     assert_raise do
-      obj = Triangle.new input  
+      Triangle.new input  
     end
 
   end
@@ -50,7 +58,7 @@ class IndexTest < Test::Unit::TestCase
     input = [ [6], [3,5], [9,7,1], [4,6,8,'1'] ]
 
     assert_raise do
-      obj = Triangle.new input  
+      Triangle.new input  
     end
     
   end
@@ -59,7 +67,7 @@ class IndexTest < Test::Unit::TestCase
     input = []
 
     assert_raise do
-      obj = Triangle.new input  
+      Triangle.new input  
     end
   end
 
@@ -68,7 +76,7 @@ class IndexTest < Test::Unit::TestCase
 
     invalid_inputs.each do |input|
       assert_raise do
-        obj = Triangle.new input  
+        Triangle.new input  
       end
     end
   end
