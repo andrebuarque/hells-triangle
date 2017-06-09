@@ -1,6 +1,9 @@
 class Triangle
   attr_accessor :maximum
   attr_writer :data
+  
+  ERR_INVALID_ARRAY_INPUT = 'Invalid or empty Array.'
+  ERR_INVALID_TRIANGLE = 'Invalid Triangle.'
 
   def initialize(arr)
     @data = arr
@@ -33,10 +36,8 @@ class Triangle
 
     # validates the array input
     def validate_triangle()
-      msg_invalid_array = "Invalid or empty Array."
-      
       if @data.class != Array || @data.empty?
-        raise msg_invalid_array
+        raise ERR_INVALID_ARRAY_INPUT
       end
 
       @data.reduce(0) do |t, curr|
@@ -46,7 +47,7 @@ class Triangle
       total_items = @data.reduce(0) { |total, n| total + n.length }
 
       if total_items != sum_up_to_one(@data.length)
-        raise "Invalid Triangle." 
+        raise ERR_INVALID_TRIANGLE
       end
     end
 
