@@ -3,8 +3,9 @@ class Triangle
   attr_writer :data
 
   def initialize(arr)
-    @data = arr.sort_by { |n| n.length }
+    @data = arr
     validate_triangle
+    @data.sort_by! { |n| n.length }
   end
 
   def maximum

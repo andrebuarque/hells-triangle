@@ -1,9 +1,11 @@
 require './Triangle'
 
 begin
+  msg_invalid_array = "Invalid or empty Array."
 
-  input = [ [6], [3,5], [9,7,1], [4,6,8,4] ]
-  
+  raise msg_invalid_array if ARGV.empty?
+  input = eval ARGV[0] rescue raise msg_invalid_array
+
   triangle = Triangle.new(input)
   total = triangle.maximum
 
